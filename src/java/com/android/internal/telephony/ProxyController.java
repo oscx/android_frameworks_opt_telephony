@@ -366,8 +366,10 @@ public class ProxyController {
                 HashSet<String> modemsInUse = new HashSet<String>(mNewLogicalModemIds.length);
                 for (String modemId : mNewLogicalModemIds) {
                     if (!modemsInUse.add(modemId)) {
-                        mTransactionFailed = true;
-                        Log.wtf(LOG_TAG, "ERROR: sending down the same id for different phones");
+                        //mTransactionFailed = true;
+                        Log.wtf(LOG_TAG, "ERROR: sending down the same id for different phones + SKIP mTransactionFailed: "+mTransactionFailed);
+                        Log.wtf(LOG_TAG, "ERROR: modemId: "+modemId);
+                        Log.wtf(LOG_TAG, "ERROR: modemsInUse: "+modemsInUse);
                     }
                 }
                 logd("onStartRadioCapabilityResponse: success=" + !mTransactionFailed);
